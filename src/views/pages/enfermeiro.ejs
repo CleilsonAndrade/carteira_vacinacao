@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<%- include('../partials/head') %>
+
+  <body>
+    <%- include('../partials/loader') %>
+
+      <!-- Conteúdo pagina de login e cadastro do enfermeiro -->
+      <div class="container">
+        <div class="content first-content">
+          <div class="first-column">
+            <h2>Bem vindo!</h2>
+            <p>faça o seu acesso</p>
+            <button id="signin" class="btn btn-primary">acesso</button>
+          </div>
+          <div class="second-column">
+            <h2>Cadastrar-se</h2>
+            <p>Preencha os campos abaixo:</p>
+            <form method="POST" action="/enfermeiro/cadastro">
+              <input required type="number" name="numero_cnes" placeholder="Digite o CNES">
+              <input required type="text" name="nome_cnes" placeholder="Digite o nome do CNES">
+              <input required type="number" name="coren_enfermeiro" placeholder="Digite o seu COREN">
+              <input required type="text" name="nome_enfermeiro" placeholder="Digite o seu nome">
+              <div class="input-box-passwd">
+                <input required type="password" name="senha_enfermeiro" placeholder="Digite uma senha"
+                  id="password-registration">
+                <img src="/assets/images/eye-close.png"
+                  alt="Imagem de olho fechado demonstrando que a senha está oculta" id="eyeicon-registration">
+              </div>
+              <p class="alert-error">
+                <% var signUpError %>
+                  <%= signUpError %>
+              </p>
+              <button class="btn btn-second">Cadastrar</button>
+            </form>
+          </div>
+        </div>
+        <div class="content second-content">
+          <div class="first-column">
+            <h2>Não possui cadastro?</h2>
+            <p>realize agora mesmo</p>
+            <p>clicando no botão abaixo</p>
+            <button id="signup" class="btn btn-primary">Cadastrar</button>
+          </div>
+          <div class="second-column">
+            <h2>Faça o seu acesso</h2>
+            <p>Digite seu login e senha abaixo, para acessar:</p>
+            <form method="POST" action="/enfermeiro">
+              <input required type="number" name="coren_enfermeiro" placeholder="Digite o seu COREN">
+              <div class="input-box-passwd">
+                <input required type="password" name="senha_enfermeiro" placeholder="Digite uma senha"
+                  id="password-login">
+                <img src="/assets/images/eye-close.png"
+                  alt="Imagem de olho fechado demonstrando que a senha está oculta" id="eyeicon-login">
+              </div>
+              <p class="alert-error">
+                <% var signInError %>
+                  <%= signInError %>
+              </p>
+              <button class="btn btn-second">Acessar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+  </body>
+
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<%- include('../partials/head') %>
+
+  <body>
+    <%- include('../partials/loader') %>
+
+      <!--Modal para o cadastro de vacinas -->
+      <div id="registration-vaccine-modal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form method="POST">
+              <div class="modal-header">
+                <h3 class="modal-title">Cadastrar vacina
+                  <button type="button" class="close" data-dismiss="modal" title="Fechar">&times;</button>
+                </h3>
+              </div>
+              <div class="modal-body">
+                <label for="numero_paciente">CNS (Nº Carteira Nacional de Vacinação):</label>
+                <input id="numero_paciente" type="number" name="numero_paciente" readonly class="form-control" required
+                  value="<%= data.numero_paciente %>">
+                <input id="id-registration" type="hidden" name="id_vacina" class="form-control" required>
+                <div id="info-container">
+                  <div class="info-box">
+                    <label for="name-registration">Nome da Vacina:</label>
+                    <input id="name-registration" disabled type="text" class="form-control" required>
+                  </div>
+                  <div class="info-box">
+                    <label for="lot-registration">Lote da Vacina:</label>
+                    <input id="lot-registration" disabled type="text" class="form-control" required>
+                  </div>
+                </div>
+                <label for="coren_enfermeiro">COREN do Enfermeiro:</label>
+                <input id="coren_enfermeiro" type="number" name="coren_enfermeiro" class="form-control" required
+                  placeholder="Digite o nº do COREN do Enfermeiro">
+                <label for="numero_cnes">Número do CNES:</label>
+                <input id="numero_cnes" type="number" name="numero_cnes" class="form-control" required
+                  placeholder="Digite o nº do CNES do estabelecimento de saúde">
+                <label for="dataFilter">Data da aplicação:</label>
+                <input id="dataFilter" name="data_aplicacao" type="date" min="1922-01-31" class="form-control" required>
+                <label>Descrição:</label>
+                <p id="description-registration"></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                <button class="btn btn-second">Cadastrar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!--Modal de informações das vacinas-->
+      <div id="information-vaccine-modal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3>Informações da vacina
+                <button type="button" class="close" data-dismiss="modal" title="Fechar">&times;</button>
+              </h3>
+            </div>
+            <div class="modal-body">
+              <div class="box-info">
+                <h4>Nome da vacina:</h4>
+                <p id="name-details"></p>
+              </div>
+              <div class="box-info">
+                <h4>Lote da vacina:</h4>
+                <p id="lot-details"></p>
+              </div>
+              <h4>Descrição:</h4>
+              <p id="decription-details"></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-second" data-dismiss="modal">Fechar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <p class="alert-error">
+
+        </p>
+
+        <div id="toggle" title="Abrir menu"></div>
+
+        <div id="sidebar">
+          <div class="info-container">
+            <div class="avatar-box">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <h1>Olá, seja bem-vindo</h1>
+            <div class="info">
+              <h2>
+                Nº Carteira de Vacinação:
+                <span>
+                  <%= data.numero_paciente %>
+                </span>
+              </h2>
+              <h2>
+                Nome:
+                <span>
+                  <%= data.nome_paciente %>
+                </span>
+              </h2>
+              <h2>
+                Idade:
+                <span>
+                  <%= data.idade %>
+                </span>
+              </h2>
+              <h2>
+                Data de nascimento:
+                <span>
+                  <%= moment(data.data_nascimento).format('DD/MM/YYYY') %>
+                </span>
+              </h2>
+              <h2>
+                Sexo:
+                <span>
+                  <%= data.sexo=="M" ? 'Masculino' : 'Feminino' %>
+                </span>
+              </h2>
+            </div>
+          </div>
+          <a href="/logout" id="logout" title="Clique aqui para sair">Sair <i
+              class="fa-solid fa-right-from-bracket"></i></a>
+        </div>
+
+        <main id="main-container">
+          <table id="vaccination-card" class="fixed-header">
+            <thead class="table-head">
+              <tr>
+                <td colspan="6">
+                  Vacina já tomadas
+                </td>
+              </tr>
+            </thead>
+            <thead>
+              <tr>
+                <th>Nome da vacina</th>
+                <th>Lote da vacina</th>
+                <th>Data de aplicação</th>
+                <th>COREN Enfermeiro</th>
+                <th>Estabelecimento de saúde</th>
+                <th>Descrição</th>
+                <th>Informações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (!data.carteiraDados[0].data_aplicacao) { %>
+                <tr>
+                  <td>Não possui registro</td>
+                  <td>Não possui registro</td>
+                  <td>Não possui registro</td>
+                  <td>Não possui registro</td>
+                  <td>Não possui registro</td>
+                  <td>Não possui registro</td>
+                  <td>Não possui registro</td>
+                </tr>
+                <% } else { %>
+                  <% data.carteiraDados.filter(function(vacRegistradas) { %>
+                    <% if(vacRegistradas.data_aplicacao){ %>
+                      <tr>
+                        <td>
+                          <%= vacRegistradas.nome_vacina %>
+                        </td>
+                        <td>
+                          <%= vacRegistradas.lote_vacina %>
+                        </td>
+                        <td>
+                          <%= vacRegistradas.data_aplicacao %>
+                        </td>
+                        <td>
+                          <%= vacRegistradas.coren_enfermeiro %>
+                        </td>
+                        <td>
+                          <%= vacRegistradas.nome_cnes %>
+                        </td>
+                        <td>
+                          <%= vacRegistradas.descricao_vacina %>
+                        </td>
+                        <td class="details">
+                          <a href="#information-vaccine-modal" data-toggle="modal">
+                            <i class="material-icons" data-toggle="tooltip"
+                              title="Visualizar informações da vacina">&#xe148;</i>
+                          </a>
+                        </td>
+                      </tr>
+                      <% } %>
+                        <% }) %>
+                          <% } %>
+            </tbody>
+          </table>
+          <table id="vaccines-available" class="fixed-header">
+            <thead class="table-head">
+              <tr>
+                <td colspan="6">
+                  Vacina à tomar
+                </td>
+              </tr>
+            </thead>
+            <thead>
+              <tr>
+                <th>Nome da vacina</th>
+                <th>Lote da vacina</th>
+                <th>Descrição</th>
+                <th>Cadastrar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for( let index=0; index < data.carteiraDados.length; index++ ) { %>
+                <% if (!data.carteiraDados[index].data_aplicacao) { %>
+                  <tr id="<%= data.carteiraDados[index].id_vacina %>">
+                    <td>
+                      <%= data.carteiraDados[index].nome_vacina %>
+                    </td>
+                    <td>
+                      <%= data.carteiraDados[index].lote_vacina %>
+                    </td>
+                    <td>
+                      <%= data.carteiraDados[index].descricao_vacina %>
+                    </td>
+                    <td class="registration">
+                      <a href="#registration-vaccine-modal" data-toggle="modal">
+                        <i class="material-icons" data-toggle="tooltip" title="Cadastrar vacina">&#xe148;</i>
+                      </a>
+                    </td>
+                  </tr>
+                  <% } %>
+
+                    <% } %>
+
+            </tbody>
+          </table>
+        </main>
+      </div>
+  </body>
+
+</html>

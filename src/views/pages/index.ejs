@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<%- include('../partials/head') %>
+
+  <body>
+    <%- include('../partials/loader') %>
+
+      <!-- Conteúdo pagina inicial -->
+      <div class="container">
+        <div class="content first-content">
+          <div class="first-column">
+            <img src="assets/images/logo.png" alt="Logo da aplicação">
+          </div>
+          <div id="btn-box" class="second-column">
+            <h2>Acessar</h2>
+            <p>Escolha qual o tipo de acesso:</p>
+            <div class="btn-group">
+              <a href="/paciente" title="Você é um paciente? Clique aqui!">
+                <button id="client" class="btn btn-second">Paciente</button>
+              </a>
+              <a href="/enfermeiro" title="Você é um enfermeiro? Clique aqui!">
+                <button class="btn btn-second">Enfermeiro</button>
+              </a>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+  </body>
+
+</html>

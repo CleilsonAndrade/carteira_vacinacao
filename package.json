@@ -1,0 +1,25 @@
+{
+  "name": "Carteira_Vacinacao_Digital",
+  "version": "1.0.0",
+  "description": "Aplicação para gerenciamento das vacinações por meio digital",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "moment": "^2.29.4",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.25.3",
+    "sequelize-auto": "^0.8.8"
+  },
+  "devDependencies": {
+    "ejs": "^3.1.8",
+    "nodemon": "^2.0.20",
+    "sequelize-cli": "^6.5.2"
+  }
+}

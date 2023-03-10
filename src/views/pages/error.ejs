@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<%- include('../partials/head') %>
+
+  <body>
+    <%- include('../partials/loader') %>
+
+      <!-- Erro 404 -->
+      <div id="notfound">
+        <% var validation %>
+          <% if (validation) { %>
+            <div class="notfound">
+              <div class="notfound-404">
+                <h1>403</h1>
+                <img src="/assets/images/ze_gotinha.png" alt="Imagem do Zé Gotinha" />
+              </div>
+              <h2>Oops! Favor validar os dados para cadastrar a vacina...</h2>
+              <p>
+                Desculpe, mas a página que você está procurando não existe ou está
+                temporariamente indisponível
+              </p>
+              <a href="/" title="Clique para retornar a página inicial">Acessar página inicial</a>
+            </div>
+
+            <% } else { %>
+              <div class="notfound">
+                <div class="notfound-404">
+                  <h1>404</h1>
+                  <img src="/assets/images/ze_gotinha.png" alt="Imagem do Zé Gotinha" />
+                </div>
+                <h2>Oops! Esta página não está disponível no momento...</h2>
+                <p>
+                  Desculpe, mas a página que você está procurando não existe ou está
+                  temporariamente indisponível
+                </p>
+                <a href="/" title="Clique para retornar a página inicial">Acessar página inicial</a>
+              </div>
+              <% } %>
+
+
+      </div>
+  </body>
+
+</html>

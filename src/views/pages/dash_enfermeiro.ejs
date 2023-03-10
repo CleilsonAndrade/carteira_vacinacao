@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<%- include('../partials/head') %>
+
+  <body>
+    <%- include('../partials/loader') %>
+
+      <div class="container">
+        <div id="toggle" title="Abrir menu"></div>
+
+        <div id="sidebar">
+          <div class="info-container">
+            <div class="avatar-box">
+              <i class="fa-solid fa-user-nurse"></i>
+            </div>
+            <h1>Olá, seja bem-vindo</h1>
+            <div class="info">
+              <h2>
+                COREN:
+                <span>
+                  <%= data.coren_enfermeiro %>
+                </span>
+              </h2>
+              <h2>
+                Nome:
+                <span>
+                  <%= data.nome_enfermeiro %>
+                </span>
+              </h2>
+            </div>
+          </div>
+          <a href="/logout" title="Clique aqui para sair">Sair <i class="fa-solid fa-right-from-bracket"></i></a>
+        </div>
+
+        <main id="main-container">
+          <h1>Cadastro de vacinas</h1>
+          <form method="POST">
+            <div class="input-group">
+              <input required type="text" name="nome_vacina" placeholder="Nome da vacina">
+              <input required type="text" name="lote_vacina" placeholder="Lote da vacina">
+              <input required type="text" name="descricao_vacina" placeholder="Descrição da vacina">
+            </div>
+            <label for="faixa_etaria">Faixa etária</label>
+            <select required class="minimal" name="faixa_etaria" id="faixa_etaria">
+              <option value="crianca">Criança</option>
+              <option value="adolescente">Adolescente</option>
+              <option value="adulto">Adulto</option>
+              <option value="idoso">Idoso</option>
+              <option selected value="todos">Todos</option>
+            </select>
+            <div class="btn-group">
+              <a href="#">
+                <button id="client" class="btn btn-second" title="Cadastrar vacina">Cadastrar</button>
+              </a>
+            </div>
+          </form>
+
+          <table class="fixed-header vaccine-registered">
+            <thead>
+              <tr>
+                <th>Nome da vacina</th>
+                <th>Lote da vacina</th>
+                <th>Faixa etária</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+            <tbody id="#dash-enfermeiro">
+              <% if (!data.vacinaCollection.length) { %>
+                <tr>
+                  <td>Não possui registro</td>
+                  <td>Não possui registro</td>
+                  <td>Não possui registro</td>
+                  <td>Não possui registro</td>
+                </tr>
+                <% } else { %>
+                  <% for(var i=0; i < data.vacinaCollection.length; i++) { %>
+                    <tr>
+                      <td>
+                        <%= data.vacinaCollection[i].nome_vacina %>
+                      </td>
+                      <td>
+                        <%= data.vacinaCollection[i].lote_vacina %>
+                      </td>
+                      <td>
+                        <%= data.vacinaCollection[i].faixa_etaria %>
+                      </td>
+                      <td>
+                        <%= data.vacinaCollection[i].descricao_vacina %>
+                      </td>
+                    </tr>
+                    <% } %>
+                      <% } %>
+            </tbody>
+          </table>
+        </main>
+      </div>
+  </body>
+
+</html>

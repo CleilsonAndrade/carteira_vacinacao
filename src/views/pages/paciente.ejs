@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<%- include('../partials/head') %>
+
+  <body>
+    <%- include('../partials/loader') %>
+
+      <!-- Conteúdo pagina de login e cadastro do enfermeiro -->
+      <div class="container">
+        <div class="content first-content">
+          <div class="first-column">
+            <h2>Bem vindo!</h2>
+            <p>faça o seu acesso</p>
+            <button id="signin" class="btn btn-primary">acesso</button>
+          </div>
+          <div class="second-column">
+            <h2>Cadastrar-se</h2>
+            <p>Preencha os campos abaixo:</p>
+            <form method="POST" action="/paciente/cadastro">
+              <input required type="number" name="numero_paciente" placeholder="Digite o número do seu CNS">
+              <input required type="text" name="nome_paciente" placeholder="Digite o seu nome">
+              <input required type="text" name="nascimento_paciente" placeholder="Sua data de nascimento"
+                onfocus="(this.type='date')">
+              <input required type="text" name="login_paciente" placeholder="Digite um login">
+              <div class="input-box-passwd">
+                <input required type="password" name="senha_paciente" placeholder="Digite uma senha"
+                  id="password-registration">
+                <img src="/assets/images/eye-close.png"
+                  alt="Imagem de olho fechado demonstrando que a senha está oculta" id="eyeicon-registration">
+              </div>
+              <legend>Sexo</legend>
+              <div class="input-group">
+                <div class="input-box">
+                  <input required type="radio" name="sexo_paciente" value="M" id="masculino">
+                  <label for="masculino">Masculino</label>
+                </div>
+                <div class="input-box">
+                  <input required type="radio" name="sexo_paciente" value="F" id="feminino">
+                  <label for="feminino">Feminino</label>
+                </div>
+              </div>
+              <p class="alert-error">
+                <% var signUpError %>
+                  <%= signUpError %>
+              </p>
+              <button class="btn btn-second">Cadastrar</button>
+            </form>
+          </div>
+        </div>
+        <div class="content second-content">
+          <div class="first-column">
+            <h2>Não possui cadastro?</h2>
+            <p>realize agora mesmo</p>
+            <p>clicando no botão abaixo</p>
+            <button id="signup" class="btn btn-primary">Cadastrar</button>
+          </div>
+          <div class="second-column">
+            <h2>Faça o seu acesso</h2>
+            <p>Digite seu login e senha abaixo, para acessar:</p>
+            <form method="POST" action="/paciente">
+              <input required type="text" name="login_paciente" placeholder="Digite o seu login">
+              <div class="input-box-passwd">
+                <input required type="password" name="senha_paciente" placeholder="Digite uma senha"
+                  id="password-login">
+                <img src="/assets/images/eye-close.png"
+                  alt="Imagem de olho fechado demonstrando que a senha está oculta" id="eyeicon-login">
+              </div>
+              <p class="alert-error">
+                <% var signInError %>
+                  <%= signInError %>
+              </p>
+              <button class="btn btn-second">Acessar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+  </body>
+
+</html>
