@@ -45,7 +45,7 @@ body {
     transform: translateX(-50%);
     width: 20px;
     height: 20px;
-    background: #F19090;
+    background: #524f4f;
 }
 
 .syringe-body .tip-needle:before {
@@ -56,7 +56,7 @@ body {
     transform: translateX(-50%);
     width: 2px;
     height: 40px;
-    background: #F19090;
+    background: #e8e2e2;
 }
 
 .syringe-body .syringe-handle {
@@ -109,7 +109,7 @@ body {
     left: 0;
     width: 100%;
     height: 80%;
-    background: #F19090;
+    background: #d2f1d2;
     animation: liquid_fall 5s linear infinite;
 }
 
@@ -120,7 +120,7 @@ body {
     transform: translateX(-50%);
     width: 10px;
     height: 10px;
-    background: #F19090;
+    background: #d2f1d2;
     border-radius: 50%;
     opacity: 0;
 }
@@ -142,7 +142,7 @@ body {
     top: -6px;
     left: 1px;
     border: 4px solid;
-    border-color: transparent transparent #F19090;
+    border-color: transparent transparent #d2f1d2;
 }
 
 .container {
@@ -175,7 +175,7 @@ body {
 }
 
 .btn {
-    border-radius: 16px;
+    border-radius: 8px;
     text-transform: uppercase;
     color: #fff;
     font-size: 10px;
@@ -188,7 +188,7 @@ body {
 .btn-primary {
     background-color: transparent;
     border: 1px solid #fff;
-    transition: background-color .5s;
+    transition: background-color .3s;
 }
 
 .btn-primary:hover {
@@ -201,7 +201,7 @@ body {
     background-color: #3c25ed;
     border: 1px solid #3c25ed;
     text-align: center;
-    transition: background-color .5s;
+    transition: background-color .3s;
 }
 
 .btn-second:hover {
@@ -302,20 +302,20 @@ input {
     border: none;
     outline: none;
     border-radius: 8px;
-    transition: .5s;
+    transition: .3s;
 }
 
 input[type="radio"]:checked+label {
-    transition: 0.5s;
+    transition: 0.3s;
     color: black;
 }
 
 input:not(:placeholder-shown) {
-    background-color: #d1d8d1;
+    background: #b9beb9;
 }
 
 input:placeholder-shown {
-    background-color: #e3f0e5;
+    background: #d9deda;
 }
 
 input::placeholder {
@@ -360,7 +360,7 @@ input[type=date] {
     display: flex;
     align-items: center;
     width: 24rem;
-    background: #E3F0E5;
+    background: #c9d1ca;
     border-radius: 8px;
 }
 
@@ -521,8 +521,8 @@ input[type=date] {
     font-weight: 700;
     border-radius: 4px;
     margin-top: 15px;
-    -webkit-transition: 0.2s all;
-    transition: 0.2s all;
+    -webkit-transition: 0.3s all;
+    transition: 0.3s all;
     opacity: 0.7.5;
 }
 
@@ -546,7 +546,7 @@ input[type=date] {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 0.5s;
+    transition: 0.3s;
     box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -561,7 +561,7 @@ input[type=date] {
     height: 2px;
     background: #fff;
     transform: translateY(-4px);
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 #toggle::after {
@@ -571,7 +571,7 @@ input[type=date] {
     height: 2px;
     background: #fff;
     transform: translateY(4px);
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 #toggle.active {
@@ -601,7 +601,7 @@ input[type=date] {
     justify-content: space-between;
     background: #fff;
     box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
-    transition: 0.5s;
+    transition: 0.3s;
     z-index: 10;
 }
 
@@ -661,7 +661,7 @@ input[type=date] {
     text-decoration: none;
     font-size: 16px;
     border-top: 1px solid #f19090da;
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 #sidebar a:hover {
@@ -734,7 +734,7 @@ input[type=date] {
 .modal-header button.close {
     margin-top: 0;
     font-size: 32px;
-    transition: color 0.2s;
+    transition: color 0.3s;
     -webkit-appearance: none;
     padding: 0;
     cursor: pointer;
@@ -893,14 +893,14 @@ input[type=date] {
 
 .modal-footer .btn-danger {
     background-color: #ec5252;
-    transition: background-color .5s;
+    transition: background-color .3s;
 }
 
 .modal-footer .btn-danger:hover {
     background-color: #fff;
     border: 1px solid #1b1717;
     color: #ec5252;
-    transition: 0.5;
+    transition: 0.3;
 }
 
 .modal-footer .btn-second {
@@ -1019,7 +1019,7 @@ select.minimal:focus {
     background-repeat: no-repeat;
     outline: none;
     background-color: #979797;
-    transition: 0.5s;
+    transition: 0.3s;
 }
 
 select:-moz-focusring {
@@ -1160,7 +1160,7 @@ thead:before {
 
 i.material-icons:hover {
     color: #fff;
-    transition: 0.5s;
+    transition: 0.3s;
 }
 
 thead th {
