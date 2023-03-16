@@ -983,7 +983,7 @@ select {
     -webkit-appearance: none;
     -moz-appearance: none;
     color: #1b1717;
-    opacity: 0.5;
+    opacity: 0.8;
     font-weight: 500;
 }
 
@@ -1000,6 +1000,7 @@ select.minimal {
         5px 5px,
         5px 5px,
         1px 1.5em;
+    background-color: #cacae0;
     background-repeat: no-repeat;
     border: none;
 }
@@ -1029,7 +1030,7 @@ select:-moz-focusring {
 
 select option {
     font-size: 18px;
-    background-color: #ecf0f1;
+    background-color: #c3ebf5;
 }
 
 
