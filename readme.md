@@ -61,7 +61,7 @@ Aplicação com temática sobre saúde, tendo objetivo de transformar os dados d
 
 ### Requisitos:
 
-NodeJS (<a href="https://nodejs.org/en">_https://nodejs.org/en</a>)
+NodeJS (<a href="https://nodejs.org/en">https://nodejs.org/en</a>)
 MySQL Server (<a href="https://dev.mysql.com/downloads/installer/">https://dev.mysql.com/downloads/installer/</a>)
 
 ---
