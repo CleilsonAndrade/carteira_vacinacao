@@ -5,22 +5,22 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema card_vaccination_db
 -- -----------------------------------------------------
--- -----------------------------------------------------
--- Schema vacinaBD
--- -----------------------------------------------------
+-- Desgin by CleilsonAndrade
 
 -- -----------------------------------------------------
--- Schema vacinaBD
+-- Schema card_vaccination_db
+--
+-- Desgin by CleilsonAndrade
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `vacinaBD` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
-USE `vacinaBD` ;
+CREATE SCHEMA IF NOT EXISTS `card_vaccination_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `card_vaccination_db` ;
 
 -- -----------------------------------------------------
--- Table `vacinaBD`.`cnes`
+-- Table `card_vaccination_db`.`cnes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `vacinaBD`.`cnes` (
+CREATE TABLE IF NOT EXISTS `card_vaccination_db`.`cnes` (
   `id_cnes` INT NOT NULL AUTO_INCREMENT,
   `numero_cnes` INT NOT NULL,
   `nome_cnes` VARCHAR(45) NOT NULL,
@@ -29,13 +29,14 @@ CREATE TABLE IF NOT EXISTS `vacinaBD`.`cnes` (
   UNIQUE INDEX `id_cnes_UNIQUE` (`id_cnes` ASC) VISIBLE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+COLLATE = utf8mb4_0900_ai_ci
+COMMENT = 'Table of CNES (Centro Nacional de Estudos Espaciais)';
 
 
 -- -----------------------------------------------------
--- Table `vacinaBD`.`enfermeiro`
+-- Table `card_vaccination_db`.`enfermeiro`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `vacinaBD`.`enfermeiro` (
+CREATE TABLE IF NOT EXISTS `card_vaccination_db`.`enfermeiro` (
   `id_enfermeiro` INT NOT NULL AUTO_INCREMENT,
   `coren_enfermeiro` INT NOT NULL,
   `nome_enfermeiro` VARCHAR(50) NOT NULL,
@@ -47,15 +48,16 @@ CREATE TABLE IF NOT EXISTS `vacinaBD`.`enfermeiro` (
   INDEX `fk_enfermeiro_cnes1_idx` (`numero_cnes` ASC) VISIBLE,
   CONSTRAINT `fk_enfermeiro_cnes1`
     FOREIGN KEY (`numero_cnes`)
-    REFERENCES `vacinaBD`.`cnes` (`numero_cnes`))
+    REFERENCES `card_vaccination_db`.`cnes` (`numero_cnes`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
+DEFAULT CHARACTER SET = utf8mb3
+COMMENT = 'Table of Enfermeiro';
 
 
 -- -----------------------------------------------------
--- Table `vacinaBD`.`vacina`
+-- Table `card_vaccination_db`.`vacina`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `vacinaBD`.`vacina` (
+CREATE TABLE IF NOT EXISTS `card_vaccination_db`.`vacina` (
   `id_vacina` INT NOT NULL AUTO_INCREMENT,
   `lote_vacina` VARCHAR(20) NOT NULL,
   `nome_vacina` VARCHAR(45) NOT NULL,
@@ -63,13 +65,14 @@ CREATE TABLE IF NOT EXISTS `vacinaBD`.`vacina` (
   `faixa_etaria` ENUM('crianca', 'adolescente', 'idoso', 'adulto', 'todos') NOT NULL,
   PRIMARY KEY (`id_vacina`, `lote_vacina`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
+DEFAULT CHARACTER SET = utf8mb3
+COMMENT = 'Table of Vacina';
 
 
 -- -----------------------------------------------------
--- Table `vacinaBD`.`paciente`
+-- Table `card_vaccination_db`.`paciente`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `vacinaBD`.`paciente` (
+CREATE TABLE IF NOT EXISTS `card_vaccination_db`.`paciente` (
   `id_paciente` INT NOT NULL AUTO_INCREMENT,
   `numero_paciente` INT NOT NULL,
   `nome_paciente` VARCHAR(45) NOT NULL,
@@ -83,13 +86,14 @@ CREATE TABLE IF NOT EXISTS `vacinaBD`.`paciente` (
   UNIQUE INDEX `nome_usuario_UNIQUE` (`login_paciente` ASC) VISIBLE,
   UNIQUE INDEX `id_paciente_UNIQUE` (`id_paciente` ASC) VISIBLE)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
+DEFAULT CHARACTER SET = utf8mb3
+COMMENT = 'Table of Paciente';
 
 
 -- -----------------------------------------------------
--- Table `vacinaBD`.`carteira`
+-- Table `card_vaccination_db`.`carteira`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `vacinaBD`.`carteira` (
+CREATE TABLE IF NOT EXISTS `card_vaccination_db`.`carteira` (
   `numero_paciente` INT NOT NULL,
   `coren_enfermeiro` INT NOT NULL,
   `numero_cnes` INT NOT NULL,
@@ -102,29 +106,30 @@ CREATE TABLE IF NOT EXISTS `vacinaBD`.`carteira` (
   INDEX `fk_carteira_vacina1_idx` (`id_vacina` ASC) VISIBLE,
   CONSTRAINT `fk_carteira_cnes1`
     FOREIGN KEY (`numero_cnes`)
-    REFERENCES `vacinaBD`.`cnes` (`numero_cnes`),
+    REFERENCES `card_vaccination_db`.`cnes` (`numero_cnes`),
   CONSTRAINT `fk_carteira_medico1`
     FOREIGN KEY (`coren_enfermeiro`)
-    REFERENCES `vacinaBD`.`enfermeiro` (`coren_enfermeiro`),
+    REFERENCES `card_vaccination_db`.`enfermeiro` (`coren_enfermeiro`),
   CONSTRAINT `fk_carteira_vacina1`
     FOREIGN KEY (`id_vacina`)
-    REFERENCES `vacinaBD`.`vacina` (`id_vacina`),
+    REFERENCES `card_vaccination_db`.`vacina` (`id_vacina`),
   CONSTRAINT `fk_paciente_has_medico_paciente1`
     FOREIGN KEY (`numero_paciente`)
-    REFERENCES `vacinaBD`.`paciente` (`numero_paciente`)
+    REFERENCES `card_vaccination_db`.`paciente` (`numero_paciente`)
     ON DELETE CASCADE
     ON UPDATE RESTRICT)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
+DEFAULT CHARACTER SET = utf8mb3
+COMMENT = 'Table of Carteira';
 
-USE `vacinaBD` ;
+USE `card_vaccination_db` ;
 
 -- -----------------------------------------------------
 -- procedure sp_cadastrarCarteira
 -- -----------------------------------------------------
 
 DELIMITER $$
-USE `vacinaBD`$$
+USE `card_vaccination_db`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_cadastrarCarteira`(
   IN paciente_numero INT,
   IN coren_enfermeiro INT,
@@ -145,7 +150,7 @@ DELIMITER ;
 -- -----------------------------------------------------
 
 DELIMITER $$
-USE `vacinaBD`$$
+USE `card_vaccination_db`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_cadastrarEnfermeiro`(
 IN numero_cnes INT,
 IN nome_cnes VARCHAR(50),
@@ -169,7 +174,7 @@ DELIMITER ;
 -- -----------------------------------------------------
 
 DELIMITER $$
-USE `vacinaBD`$$
+USE `card_vaccination_db`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_cadastrarPaciente`(
 IN paciente_numero INT,
 IN paciente_nome VARCHAR(50),
@@ -205,7 +210,7 @@ DELIMITER ;
 -- -----------------------------------------------------
 
 DELIMITER $$
-USE `vacinaBD`$$
+USE `card_vaccination_db`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_consultarCarteira`(
 	IN acao_paciente enum('selectPacienteDados', 'selectCarteiraDados'),
 	IN num_paciente INT,
