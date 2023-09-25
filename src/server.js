@@ -19,6 +19,6 @@ app.use(express.json()) //Parse URL-encoded bodies for form data
 app.use(routes)
 
 app.listen(PORT, function (err) {
-  if (err) console.log("Erro na configuração do servidor: " + err)
-  console.log(`Servidor ligado com sucesso, clique no link segurando a tecla CTRL para acessar: http://localhost:${PORT}`)
+  if (err) console.log("Server configuration error:" + err)
+  console.log(`Server connected successfully, click on the link holding the CTRL key to access: \n 🚀 http://localhost:${PORT}/ \n`)
 })
