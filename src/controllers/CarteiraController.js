@@ -12,7 +12,7 @@ module.exports = {
       }
     })
 
-    console.log(enfermeiroVerified ? 'Enfermeiro achou' : 'Enfermeiro: Não achou')
+    console.log(enfermeiroVerified ? 'Nurse found' : "Nurse: Didn't think so")
 
     const cnesVerified = await CNES.findOne({
       where: {

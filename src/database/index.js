@@ -20,10 +20,10 @@ Carteira.init(connection)
 connection
   .authenticate()
   .then(() => {
-    console.log('Conexão com o banco de dados estabelecida com sucesso.');
+    console.log('Database connection established successfully');
   })
   .catch(err => {
-    console.error('Conexão com banco de dados não estabelecida...' + err);
+    console.error('Database connection not established:' + err);
   });
 
 module.exports = connection
