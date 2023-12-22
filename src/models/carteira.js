@@ -41,7 +41,7 @@ class carteira extends Model {
       },
       data_aplicacao: {
         type: DataTypes.DATEONLY,
-        allowNull: false
+        allowNull: true
       }
     }, {
       sequelize,

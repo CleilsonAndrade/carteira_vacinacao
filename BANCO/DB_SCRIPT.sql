@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `card_vaccination_db`.`carteira` (
   `coren_enfermeiro` INT NOT NULL,
   `numero_cnes` INT NOT NULL,
   `id_vacina` INT NOT NULL,
-  `data_aplicacao` DATE NOT NULL,
+  `data_aplicacao` DATE NULL,
   PRIMARY KEY (`numero_paciente`, `coren_enfermeiro`, `numero_cnes`, `id_vacina`),
   INDEX `fk_paciente_has_medico_paciente1_idx` (`numero_paciente` ASC) VISIBLE,
   INDEX `fk_carteira_medico1_idx` (`coren_enfermeiro` ASC) VISIBLE,
