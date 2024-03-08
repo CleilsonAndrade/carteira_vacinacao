@@ -19,7 +19,7 @@ Aplicação com temática sobre saúde, tendo objetivo de transformar os dados d
 
 ## Requisitos Funcionais:
 
-- [x] Salva os dados do paciente;<br>
+- [x] Salva os dados do paciente<br>
 - [x] Mostra vacinas obrigatórias<br>
 - [x] Salva vacinas tomadas<br>
 - [x] Válida vacinas obrigatórias<br>
