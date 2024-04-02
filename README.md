@@ -84,6 +84,7 @@ Aplicação com temática sobre saúde, tendo objetivo de transformar os dados d
 ```bash
   # Clone este repositório:
   $ git clone https://github.com/CleilsonAndrade/carteira_vacinacao.git
+  $ cd ./carteira_vacinacao
 
   # Instalar as dependências:
   $ yarn install
