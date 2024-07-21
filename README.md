@@ -1,6 +1,6 @@
 <div align="center">
     <h1 align="center">Carteira de Vacinação Digital</h1>
-    <p>Aplicação tem objetivo de transformar os dados da carteira de vacinação convencional de papel, em um sistema digital para guardar informações do usuário e suas vacinas já tomadas</p>
+    <p>Aplicação tem objetivo de transformar os dados da carteira de vacinação convencional de papel, em um sistema digital para guardar informações do usuário e suas vacinas já tomadas.</p>
     <img src="./design/logo.png" alt="Logo" width="500">
 </div>
 
