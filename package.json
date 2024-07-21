@@ -2,7 +2,7 @@
   "name": "Carteira_Vacinacao_Digital",
   "version": "1.0.0",
   "description": "Aplicação para gerenciamento das vacinações por meio digital",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "dev": "nodemon src/server.js"
   },

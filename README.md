@@ -17,7 +17,7 @@
 * [Licença](#licença)
 
 # 📃 <span id="descrição">Descrição</span>
-Aplicação com temática sobre saúde, tendo objetivo de transformar os dados da carteira de vacinação convencional de papel, em um sistema digital para guardar informações do usuário e suas vacinas já tomadas, sendo seu desenvolvimento realizado durante o Projeto Integrador Ministrado pelo <a href="https://www.linkedin.com/in/carlos-henrique-duarte-felisbino-9b493526/">_Professor Carlos Henrique Duarte Felisbino_ na [Universidade de Santo Amaro - Unisa](https://www.unisa.br/) para o cursos de Analise e Desenvolvimento de Sistemas.</a>
+Aplicação com temática sobre saúde, tendo objetivo de transformar os dados da carteira de vacinação convencional de papel, em um sistema digital para guardar informações do usuário e suas vacinas já tomadas, sendo seu desenvolvimento realizado durante o Projeto Integrador Ministrado pelo <a href="https://www.linkedin.com/in/carlos-henrique-duarte-felisbino-9b493526/">_Professor Carlos Henrique Duarte Felisbino_ na [Universidade de Santo Amaro - Unisa](https://www.unisa.br/) para o curso de Analise e Desenvolvimento de Sistemas.</a>
 
 # 📌 <span id="requisitos">Requisitos Funcionais</span>
 - [x] Salva os dados do paciente<br>
