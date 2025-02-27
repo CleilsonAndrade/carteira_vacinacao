@@ -1,23 +1,25 @@
-name: Deploy no Servidor
+name: CI/CD
 
-on:
-  push:
-    branches:
-      - main  # Altere para o branch que deseja monitorar
+on:  
+  push:  
+    branches: [ master ]  
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+jobs:  
+  build:  
+    runs-on: self-hosted  
+    steps:  
+      - name: Clonar repositório  
+        uses: actions/checkout@v3  
 
-    steps:
-    - name: Acessar o servidor via SSH e atualizar
-      uses: appleboy/ssh-action@v1.0.3
-      with:
-        host: ${{ secrets.SERVER_HOST }}
-        username: ${{ secrets.SERVER_USER }}
-        key: ${{ secrets.SERVER_SSH_KEY }}
-        script: |
-          cd /caminho/do/seu/projeto
-          git pull origin main
-          npm install  # Caso use Node.js
-          pm2 restart carteira_vacinacao
+      - name: Instalar dependências  
+        run: npm install  
+
+      - name: Rodar lint  
+        run: npm run lint  
+
+      - name: Rodar testes  
+        run: npm test  
+
+      - name: Fazer deploy  
+        run: |  
+          pm2 restart /carteira_vacinacao  # Substitua "app" pelo nome do seu processo no PM2  
