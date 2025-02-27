@@ -36,12 +36,16 @@ jobs:
     
     steps:
     - uses: actions/checkout@v3
+
+    - name: Set up SSH key
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan github.com >> ~/.ssh/known_hosts
     
     - name: Install dependencies
       run: npm ci --production
-
-    - name: Git pull to update code
-      run: git pull origin ${{ github.ref_name }}
     
     - name: Deploy with PM2
       run: |
