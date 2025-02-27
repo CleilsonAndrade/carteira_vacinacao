@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 
 module.exports = {
   dialect: process.env.DB_DIALECT,
@@ -11,4 +11,4 @@ module.exports = {
     timestamps: false,
     freezeTableName: true
   }
-}
+};

@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize')
+const { Model, DataTypes } = require('sequelize');
 
 class Vacina extends Model {
   static init(sequelize) {
@@ -31,17 +31,17 @@ class Vacina extends Model {
       tableName: 'vacina',
       indexes: [
         {
-          name: "PRIMARY",
+          name: 'PRIMARY',
           unique: true,
-          using: "BTREE",
+          using: 'BTREE',
           fields: [
-            { name: "id_vacina" },
-            { name: "lote_vacina" },
+            { name: 'id_vacina' },
+            { name: 'lote_vacina' },
           ]
         },
       ]
-    })
+    });
   }
 }
 
-module.exports = Vacina
+module.exports = Vacina;

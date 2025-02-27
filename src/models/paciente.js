@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize')
+const { Model, DataTypes } = require('sequelize');
 
 class Paciente extends Model {
   static init(sequelize) {
@@ -33,7 +33,7 @@ class Paciente extends Model {
       login_paciente: {
         type: DataTypes.STRING(50),
         allowNull: false,
-        unique: "nome_usuario_UNIQUE"
+        unique: 'nome_usuario_UNIQUE'
       },
       senha_paciente: {
         type: DataTypes.STRING(50),
@@ -44,41 +44,41 @@ class Paciente extends Model {
       tableName: 'paciente',
       indexes: [
         {
-          name: "PRIMARY",
+          name: 'PRIMARY',
           unique: true,
-          using: "BTREE",
+          using: 'BTREE',
           fields: [
-            { name: "id_paciente" },
-            { name: "numero_paciente" },
+            { name: 'id_paciente' },
+            { name: 'numero_paciente' },
           ]
         },
         {
-          name: "id_usuario_UNIQUE",
+          name: 'id_usuario_UNIQUE',
           unique: true,
-          using: "BTREE",
+          using: 'BTREE',
           fields: [
-            { name: "numero_paciente" },
+            { name: 'numero_paciente' },
           ]
         },
         {
-          name: "nome_usuario_UNIQUE",
+          name: 'nome_usuario_UNIQUE',
           unique: true,
-          using: "BTREE",
+          using: 'BTREE',
           fields: [
-            { name: "login_paciente" },
+            { name: 'login_paciente' },
           ]
         },
         {
-          name: "id_paciente_UNIQUE",
+          name: 'id_paciente_UNIQUE',
           unique: true,
-          using: "BTREE",
+          using: 'BTREE',
           fields: [
-            { name: "id_paciente" },
+            { name: 'id_paciente' },
           ]
         },
       ]
-    })
+    });
   }
 }
 
-module.exports = Paciente
+module.exports = Paciente;

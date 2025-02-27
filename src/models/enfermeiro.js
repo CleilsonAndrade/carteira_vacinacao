@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize')
+const { Model, DataTypes } = require('sequelize');
 
 class Enfermeiro extends Model {
   static init(sequelize) {
@@ -36,41 +36,41 @@ class Enfermeiro extends Model {
       tableName: 'enfermeiro',
       indexes: [
         {
-          name: "PRIMARY",
+          name: 'PRIMARY',
           unique: true,
-          using: "BTREE",
+          using: 'BTREE',
           fields: [
-            { name: "id_enfermeiro" },
-            { name: "coren_enfermeiro" },
-            { name: "numero_cnes" },
+            { name: 'id_enfermeiro' },
+            { name: 'coren_enfermeiro' },
+            { name: 'numero_cnes' },
           ]
         },
         {
-          name: "id_medico_UNIQUE",
+          name: 'id_medico_UNIQUE',
           unique: true,
-          using: "BTREE",
+          using: 'BTREE',
           fields: [
-            { name: "id_enfermeiro" },
+            { name: 'id_enfermeiro' },
           ]
         },
         {
-          name: "coren_enfermeiro_UNIQUE",
+          name: 'coren_enfermeiro_UNIQUE',
           unique: true,
-          using: "BTREE",
+          using: 'BTREE',
           fields: [
-            { name: "coren_enfermeiro" },
+            { name: 'coren_enfermeiro' },
           ]
         },
         {
-          name: "fk_enfermeiro_cnes1_idx",
-          using: "BTREE",
+          name: 'fk_enfermeiro_cnes1_idx',
+          using: 'BTREE',
           fields: [
-            { name: "numero_cnes" },
+            { name: 'numero_cnes' },
           ]
         },
       ]
-    })
+    });
   }
 }
 
-module.exports = Enfermeiro
+module.exports = Enfermeiro;

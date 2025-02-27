@@ -1,10 +1,10 @@
-const Cnes = require('../models/cnes')
+const Cnes = require('../models/cnes');
 
 module.exports = {
   async index(req, res) {
-    const cnes = await Cnes.findAll()
+    const cnes = await Cnes.findAll();
 
-    return res.json(cnes)
+    return res.json(cnes);
   },
 
   async registrationEstablishment(numero_cnes, nome_cnes) {
@@ -12,8 +12,8 @@ module.exports = {
       where: {
         numero_cnes: numero_cnes, nome_cnes: nome_cnes
       }
-    })
+    });
 
-    return created
+    return created;
   }
-}
+};

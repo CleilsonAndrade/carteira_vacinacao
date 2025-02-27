@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize')
+const { Model, DataTypes } = require('sequelize');
 
 class Cnes extends Model {
   static init(sequelize) {
@@ -23,33 +23,33 @@ class Cnes extends Model {
       tableName: 'cnes',
       indexes: [
         {
-          name: "PRIMARY",
+          name: 'PRIMARY',
           unique: true,
-          using: "BTREE",
+          using: 'BTREE',
           fields: [
-            { name: "id_cnes" },
-            { name: "numero_cnes" },
+            { name: 'id_cnes' },
+            { name: 'numero_cnes' },
           ]
         },
         {
-          name: "numero_cnes_UNIQUE",
+          name: 'numero_cnes_UNIQUE',
           unique: true,
-          using: "BTREE",
+          using: 'BTREE',
           fields: [
-            { name: "numero_cnes" },
+            { name: 'numero_cnes' },
           ]
         },
         {
-          name: "id_cnes_UNIQUE",
+          name: 'id_cnes_UNIQUE',
           unique: true,
-          using: "BTREE",
+          using: 'BTREE',
           fields: [
-            { name: "id_cnes" },
+            { name: 'id_cnes' },
           ]
         },
       ]
-    })
+    });
   }
 }
 
-module.exports = Cnes
+module.exports = Cnes;
