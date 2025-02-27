@@ -4,7 +4,8 @@
   "description": "Aplicação para gerenciamento das vacinações por meio digital",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon src/server.js",
+    "lint": "eslint ."
   },
   "keywords": [
     "vaccination",
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "ejs": "^3.1.8",
+    "eslint": "^9.21.0",
     "nodemon": "^2.0.20",
     "sequelize-cli": "^6.5.2"
   }
