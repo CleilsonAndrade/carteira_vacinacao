@@ -1,25 +1,45 @@
-name: CI/CD
+name: CI/CD Pipeline
 
-on:  
-  push:  
-    branches: [ master ]  
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
 
-jobs:  
-  build:  
-    runs-on: self-hosted  
-    steps:  
-      - name: Clonar repositório  
-        uses: actions/checkout@v3  
+jobs:
+  test-and-lint:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run linting
+      run: npm run lint
+      
+    - name: Run tests
+      run: npm test
 
-      - name: Instalar dependências  
-        run: npm install  
-
-      - name: Rodar lint  
-        run: npm run lint  
-
-      - name: Rodar testes  
-        run: npm test  
-
-      - name: Fazer deploy  
-        run: |  
-          pm2 restart /carteira_vacinacao  # Substitua "app" pelo nome do seu processo no PM2  
+  deploy:
+    needs: test-and-lint
+    runs-on: self-hosted
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Install dependencies
+      run: npm ci --production
+    
+    - name: Deploy with PM2
+      run: |
+        # Se a aplicação já estiver configurada no PM2, apenas reinicie
+        pm2 restart ecosystem.config.js || pm2 start ecosystem.config.js
