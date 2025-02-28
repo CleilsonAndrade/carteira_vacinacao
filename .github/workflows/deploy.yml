@@ -50,7 +50,10 @@ jobs:
     - name: Ensure .env file exists
       run: |
         if [ ! -f .env ]; then
+          echo "No .env file found, using .env.example to create one."
           cp .env.example .env
+        else
+          echo ".env file already exists. Skipping creation."
         fi
     
     - name: Deploy with PM2
