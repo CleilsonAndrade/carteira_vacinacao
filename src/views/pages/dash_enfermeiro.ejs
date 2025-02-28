@@ -83,7 +83,9 @@
                         <%= data.vacinaCollection[i].lote_vacina %>
                       </td>
                       <td>
-                        <%= data.vacinaCollection[i].faixa_etaria %>
+                        <%=
+                          data.vacinaCollection[i].faixa_etaria=data.vacinaCollection[i].faixa_etaria.charAt(0).toUpperCase()
+                          + data.vacinaCollection[i].faixa_etaria.slice(1); %>
                       </td>
                       <td>
                         <%= data.vacinaCollection[i].descricao_vacina %>
