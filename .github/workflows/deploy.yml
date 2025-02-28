@@ -45,7 +45,7 @@ jobs:
         ssh-keyscan github.com >> ~/.ssh/known_hosts
     
     - name: Install dependencies
-      run: npm ci --production
+      run: npm ci
     
     - name: Deploy with PM2
       run: |
