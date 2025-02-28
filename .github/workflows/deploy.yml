@@ -47,13 +47,15 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
-    - name: Debug .env file
+    - name: Copy existing .env file
       run: |
+        cp /home/casa/Deploy/actions-runner/_work/carteira_vacinacao/carteira_vacinacao/.env ./.env
+        # Verificar se a cópia foi bem-sucedida
         if [ -f .env ]; then
-          echo ".env exists, content:"
-          cat .env
+          echo "Arquivo .env copiado com sucesso"
         else
-          echo ".env file is missing!"
+          echo "ERRO: Falha ao copiar arquivo .env"
+          exit 1
         fi
     
     - name: Deploy with PM2
