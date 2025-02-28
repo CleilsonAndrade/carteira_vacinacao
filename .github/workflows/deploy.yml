@@ -47,11 +47,11 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
-    - name: Ensure .env file exists
+    - name: Preserve .env file
       run: |
-        # Verifique se o .env já existe na raiz do projeto
+        # Verifique se o .env já existe na raiz do projeto antes de criar um novo
         if [ ! -f .env ]; then
-          echo "No .env file found. Using .env.example to create .env."
+          echo ".env file not found. Using .env.example to create .env."
           cp .env.example .env
         else
           echo ".env file already exists. Skipping creation."
