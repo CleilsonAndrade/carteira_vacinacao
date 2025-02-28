@@ -46,6 +46,12 @@ jobs:
     
     - name: Install dependencies
       run: npm ci
+
+    - name: Ensure .env file exists
+      run: |
+        if [ ! -f .env ]; then
+          cp .env.example .env
+        fi
     
     - name: Deploy with PM2
       run: |
