@@ -13,7 +13,6 @@ routes.get('/', (req, res) => {
   return res.render('pages/index');
 });
 
-
 // Renderizar a pagina de login e cadastro do enfermeiro
 routes.get('/enfermeiro', (req, res) => {
   return res.render('pages/enfermeiro');
@@ -31,7 +30,6 @@ routes.get('/enfermeiro/:user_id', EnfermeiroController.dash);
 // Rota de cadastrar vacinas no acesso do enfermeiro
 routes.post('/enfermeiro/:user_id', VacinaController.store);
 
-
 // Renderizar a pagina de login e cadastro do paciente
 routes.get('/paciente', (req, res) => {
   return res.render('pages/paciente');
@@ -48,7 +46,6 @@ routes.get('/paciente/:user_id', PacienteController.dash);
 
 // Rota do login do paciente e listar as vacinas
 routes.post('/paciente/:user_id', CarteiraController.store);
-
 
 // Rota de logoff
 routes.get('/logout', (req, res) => {

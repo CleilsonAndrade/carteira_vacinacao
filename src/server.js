@@ -20,5 +20,7 @@ app.use(routes);
 
 app.listen(PORT, function (err) {
   if (err) console.log('Server configuration error:' + err);
-  console.log(`Server connected successfully, click on the link holding the CTRL key to access: \n 🚀 http://localhost:${PORT}/ \n`);
+  console.log(
+    `Server connected successfully, click on the link holding the CTRL key to access: \n 🚀 http://localhost:${PORT}/ \n`
+  );
 });

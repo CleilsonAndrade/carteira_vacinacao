@@ -10,10 +10,11 @@ module.exports = {
   async registrationEstablishment(numero_cnes, nome_cnes) {
     const [cnes, created] = await Cnes.findOrCreate({
       where: {
-        numero_cnes: numero_cnes, nome_cnes: nome_cnes
-      }
+        numero_cnes: numero_cnes,
+        nome_cnes: nome_cnes,
+      },
     });
 
     return created;
-  }
+  },
 };

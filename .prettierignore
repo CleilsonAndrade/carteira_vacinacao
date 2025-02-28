@@ -1,0 +1,9 @@
+dist
+node_modules
+global
+.jest
+yarn.lock
+.gitignore
+.gitattributes
+.eslintignore
+coverag

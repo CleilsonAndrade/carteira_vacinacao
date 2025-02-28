@@ -9,14 +9,15 @@ module.exports = {
   },
 
   async store(req, res) {
-    const { lote_vacina, nome_vacina, descricao_vacina, faixa_etaria } = req.body;
+    const { lote_vacina, nome_vacina, descricao_vacina, faixa_etaria } =
+      req.body;
 
     const vacina = await Vacina.create({
       lote_vacina,
       nome_vacina,
       descricao_vacina,
-      faixa_etaria
+      faixa_etaria,
     });
     res.redirect(req.url);
-  }
+  },
 };

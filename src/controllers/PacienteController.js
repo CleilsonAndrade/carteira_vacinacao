@@ -19,28 +19,33 @@ module.exports = {
       where: {
         [Op.and]: [
           { login_paciente: login_paciente },
-          { senha_paciente: md5(senha_paciente) }
-        ]
-      }
+          { senha_paciente: md5(senha_paciente) },
+        ],
+      },
     });
 
     if (!pacienteAuth) {
-      return res.render('pages/paciente', { signInError: 'Favor validar as credenciais de acesso' });
+      return res.render('pages/paciente', {
+        signInError: 'Favor validar as credenciais de acesso',
+      });
     }
 
     let data = { ...pacienteAuth.dataValues };
 
     const { numero_paciente, nascimento } = data;
 
-    const pacienteDados = await Paciente.sequelize.query('CALL sp_consultarCarteira(:acao_paciente, :num_paciente, :nascimento, :login, :senha)', {
-      replacements: {
-        acao_paciente: 'selectPacienteDados',
-        num_paciente: numero_paciente,
-        nascimento: nascimento,
-        login: login_paciente,
-        senha: senha_paciente
+    const pacienteDados = await Paciente.sequelize.query(
+      'CALL sp_consultarCarteira(:acao_paciente, :num_paciente, :nascimento, :login, :senha)',
+      {
+        replacements: {
+          acao_paciente: 'selectPacienteDados',
+          num_paciente: numero_paciente,
+          nascimento: nascimento,
+          login: login_paciente,
+          senha: senha_paciente,
+        },
       }
-    });
+    );
 
     const userId = generate_key();
 
@@ -59,19 +64,27 @@ module.exports = {
   },
 
   async registration(req, res) {
-    const { numero_paciente, nome_paciente, nascimento_paciente, sexo_paciente, login_paciente, senha_paciente } = req.body;
+    const {
+      numero_paciente,
+      nome_paciente,
+      nascimento_paciente,
+      sexo_paciente,
+      login_paciente,
+      senha_paciente,
+    } = req.body;
 
     const pacienteVerified = await Paciente.findOne({
       where: {
         [Op.and]: [
           { login_paciente: login_paciente },
-          { senha_paciente: senha_paciente }
-        ]
-      }
+          { senha_paciente: senha_paciente },
+        ],
+      },
     });
 
     if (!pacienteVerified) {
-      const paciente = await Paciente.sequelize.query('CALL sp_cadastrarPaciente (:paciente_numero, :paciente_nome, :paciente_nascimento, :sexo_paciente, :login, :senha)',
+      const paciente = await Paciente.sequelize.query(
+        'CALL sp_cadastrarPaciente (:paciente_numero, :paciente_nome, :paciente_nascimento, :sexo_paciente, :login, :senha)',
         {
           replacements: {
             paciente_numero: numero_paciente,
@@ -79,28 +92,37 @@ module.exports = {
             paciente_nascimento: nascimento_paciente,
             sexo_paciente: sexo_paciente,
             login: login_paciente,
-            senha: senha_paciente
-          }
-        });
+            senha: senha_paciente,
+          },
+        }
+      );
 
-      return res.render('pages/paciente', { signUpError: 'Usuário cadastrado com sucesso' });
+      return res.render('pages/paciente', {
+        signUpError: 'Usuário cadastrado com sucesso',
+      });
     }
 
-    return res.render('pages/paciente', { signUpError: 'Usuário já cadastrado' });
+    return res.render('pages/paciente', {
+      signUpError: 'Usuário já cadastrado',
+    });
   },
 
   async dash(req, res) {
-    const { numero_paciente, data_nascimento, login_paciente, senha_paciente } = bodyData;
+    const { numero_paciente, data_nascimento, login_paciente, senha_paciente } =
+      bodyData;
 
-    const carteiraDados = await Paciente.sequelize.query('CALL sp_consultarCarteira(:acao_paciente, :num_paciente, :nascimento, :login, :senha)', {
-      replacements: {
-        acao_paciente: 'selectCarteiraDados',
-        num_paciente: numero_paciente,
-        nascimento: data_nascimento,
-        login: login_paciente,
-        senha: senha_paciente
+    const carteiraDados = await Paciente.sequelize.query(
+      'CALL sp_consultarCarteira(:acao_paciente, :num_paciente, :nascimento, :login, :senha)',
+      {
+        replacements: {
+          acao_paciente: 'selectCarteiraDados',
+          num_paciente: numero_paciente,
+          nascimento: data_nascimento,
+          login: login_paciente,
+          senha: senha_paciente,
+        },
       }
-    });
+    );
 
     bodyData = { ...bodyData, carteiraDados };
 

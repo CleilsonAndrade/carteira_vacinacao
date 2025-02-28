@@ -22,7 +22,7 @@ connection
   .then(() => {
     console.log('Database connection established successfully');
   })
-  .catch(err => {
+  .catch((err) => {
     console.error('Database connection not established:' + err);
   });
 

@@ -20,13 +20,15 @@ module.exports = {
       where: {
         [Op.and]: [
           { coren_enfermeiro: coren_enfermeiro },
-          { senha_enfermeiro: md5(senha_enfermeiro) }
-        ]
-      }
+          { senha_enfermeiro: md5(senha_enfermeiro) },
+        ],
+      },
     });
 
     if (!enfermeiro) {
-      return res.render('pages/enfermeiro', { signInError: 'Favor validar as credenciais de acesso' });
+      return res.render('pages/enfermeiro', {
+        signInError: 'Favor validar as credenciais de acesso',
+      });
     }
 
     let userId = generate_key();
@@ -42,31 +44,44 @@ module.exports = {
   },
 
   async registration(req, res) {
-    const { numero_cnes, nome_cnes, coren_enfermeiro, nome_enfermeiro, senha_enfermeiro } = req.body;
+    const {
+      numero_cnes,
+      nome_cnes,
+      coren_enfermeiro,
+      nome_enfermeiro,
+      senha_enfermeiro,
+    } = req.body;
 
     const enfermeiroVerified = await Enfermeiro.findOne({
       where: {
         [Op.and]: [
           { coren_enfermeiro: coren_enfermeiro },
-          { nome_enfermeiro: nome_enfermeiro }
-        ]
-      }
+          { nome_enfermeiro: nome_enfermeiro },
+        ],
+      },
     });
 
     if (!enfermeiroVerified) {
-      const cnesVerified = await CnesController.registrationEstablishment(numero_cnes, nome_cnes);
+      const cnesVerified = await CnesController.registrationEstablishment(
+        numero_cnes,
+        nome_cnes
+      );
 
       const enfermeiro = await Enfermeiro.create({
         numero_cnes,
         coren_enfermeiro,
         nome_enfermeiro,
-        senha_enfermeiro: md5(senha_enfermeiro)
+        senha_enfermeiro: md5(senha_enfermeiro),
       });
 
-      return res.render('pages/enfermeiro', { signUpError: 'Usuário cadastrado com sucesso' });
+      return res.render('pages/enfermeiro', {
+        signUpError: 'Usuário cadastrado com sucesso',
+      });
     }
 
-    return res.render('pages/enfermeiro', { signUpError: 'Usuário já cadastrado' });
+    return res.render('pages/enfermeiro', {
+      signUpError: 'Usuário já cadastrado',
+    });
   },
 
   async dash(req, res) {
@@ -80,5 +95,5 @@ module.exports = {
     } else {
       return res.redirect('/');
     }
-  }
+  },
 };

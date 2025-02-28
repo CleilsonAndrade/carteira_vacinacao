@@ -7,6 +7,10 @@ module.exports = {
     return md5.digest('hex');
   },
   generate_key() {
-    return crypto.randomBytes(16).toString('base64').replace(/\//g, '_').replace(/\+/g, '-');
+    return crypto
+      .randomBytes(16)
+      .toString('base64')
+      .replace(/\//g, '_')
+      .replace(/\+/g, '-');
   },
 };
