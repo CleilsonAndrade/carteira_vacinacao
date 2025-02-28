@@ -49,8 +49,9 @@ jobs:
 
     - name: Ensure .env file exists
       run: |
+        # Verifique se o .env já existe na raiz do projeto
         if [ ! -f .env ]; then
-          echo "No .env file found, using .env.example to create one."
+          echo "No .env file found. Using .env.example to create .env."
           cp .env.example .env
         else
           echo ".env file already exists. Skipping creation."
