@@ -5,11 +5,11 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "lint": "eslint . && prettier --write ./src",
+    "lint": "eslint ./src && prettier --write ./src",
     "prepare": "husky"
   },
   "lint-staged": {
-    "{src,apps,libs,test}/**/*.js": [
+    "{src}/**/*.js": [
       "npm run lint"
     ]
   },
